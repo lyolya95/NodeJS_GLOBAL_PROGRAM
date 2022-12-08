@@ -1,15 +1,13 @@
 const fs = require('fs');
 const path = require('path');
-const filePath = path.join(__dirname, 'files/nodejs.csv');
 const csv = require('csvtojson');
 
-csv()
-    .fromFile(filePath)
-    .then((jsonObj) => JSON.stringify(jsonObj))
-    .then(data => {
-        fs.writeFile('message.txt', data, function (err) {
-            if (err) throw err;
-            console.log('File saved!');
-        });
-    })
-    .catch(err => console.log(err));
+const filePath = path.join(__dirname, 'files/nodejs.csv');
+
+const writeStream = fs.createWriteStream(path.join(__dirname, 'files/nodejs.txt'));
+const readStream = fs.createReadStream(filePath);
+
+readStream
+    .pipe(csv())
+    .on('data', (data) => writeStream.write(data))
+    .on('error', (err => console.log(err)));

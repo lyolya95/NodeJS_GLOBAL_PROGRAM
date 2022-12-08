@@ -3,13 +3,10 @@ import csv from "csvtojson";
 import fs from "fs";
 import filePath from "./utils/path.js";
 
-csv()
-    .fromFile(filePath)
-    .then((jsonObj) => JSON.stringify(jsonObj))
-    .then(data => {
-        fs.writeFile('message.txt', data, function (err) {
-            if (err) throw err;
-            console.log('File saved!');
-        });
-    })
-    .catch(err => console.log(err));
+const writeStream = fs.createWriteStream(filePath.filePathTXT);
+const readStream = fs.createReadStream(filePath.filePathCSV);
+
+readStream
+    .pipe(csv())
+    .on('data', (data) => writeStream.write(data))
+    .on('error', (err => console.log(err)));
