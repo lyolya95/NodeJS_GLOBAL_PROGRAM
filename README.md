@@ -6,9 +6,7 @@
 
 <code>npm install</code>
 
-#### for checking task 1 & 2:
+#### for checking tasks:
 <code>npm run task1</code>
 <code>npm run task2</code>
-
-
-#### for checking task 3, see file task3.js
+<code>npm run task3</code>

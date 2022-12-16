@@ -1,4 +1,3 @@
-// For working with this task, you need to add { "type":"module" } into package.json
 import csv from "csvtojson";
 import fs from "fs";
 import filePath from "./utils/path.js";
