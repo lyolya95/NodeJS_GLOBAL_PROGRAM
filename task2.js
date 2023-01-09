@@ -10,4 +10,4 @@ const readStream = fs.createReadStream(filePath);
 readStream
     .pipe(csv())
     .on('data', (data) => writeStream.write(data))
-    .on('error', (err => console.log(err)));
+    .on('error', err => console.log(err));
