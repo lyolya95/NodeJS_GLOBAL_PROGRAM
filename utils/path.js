@@ -1,4 +1,4 @@
-const filePathCSV = 'files/nodejs.csv'
-const filePathTXT = 'files/nodejs.txt'
+const filePathCSV = 'files/nodejs.csv';
+const filePathTXT = 'files/nodejs.txt';
 
 export default { filePathCSV, filePathTXT };
